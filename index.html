@@ -4,44 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
-      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
-      integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <title>Document</title>
+
+    <title>Cars</title>
   </head>
 
   <body>
     <div class="container"></div>
   </body>
-
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+    integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script id="handlebars-template" type="text/x-handlebars-template">
-    <table class='cars'>
-      <tr>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Color</th>
-        <th>Price</th>
-        <th>Reg. Number</th>
-      </tr>
-      {{#each cars}}
-        <tr>
-          <td>{{this.make}}</td>
-          <td>{{this.model}}</td>
-          <td>{{this.color}}</td>
-          <td>{{this.price}}</td>
-          <td>{{this.reg_number}}</td>
-        </tr>
+    <div class='colors'>
+      <h2>All Colors</h2>
+      <ul>
+        {{#each colors}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class='makes'>
+      <h2>All Makes</h2>
+      <ul>
+        {{#each makes}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <h2>Cars</h2>
+    <h3>Filter</h3>
+    <label for='make'>Make:</label>
+    <select onchange='filter()' name='make' id='make'>
+      <option value='all'>All</option>
+      {{#each makes}}
+        <option value={{this}}>{{this}}</option>
       {{/each}}
-    </table>
+    </select>
+    <label for='color'>Color:</label>
+    <select onchange='filter()' name='color' id='color'>
+      <option value='all'>All</option>
+      {{#each colors}}
+        <option value={{this}}>{{this}}</option>
+      {{/each}}
+    </select>
+    <table class='cars'></table>
+  </script>
+  <script id="car-table-template" type="text/x-handlebars-template">
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Price</th>
+      <th>Reg. Number</th>
+    </tr>
+    {{#each cars}}
+      <tr>
+        <td>{{this.make}}</td>
+        <td>{{this.model}}</td>
+        <td>{{this.color}}</td>
+        <td>R {{this.price}}.00</td>
+        <td>{{this.reg_number}}</td>
+      </tr>
+    {{/each}}
   </script>
   <script src="index.js"></script>
 </html>
