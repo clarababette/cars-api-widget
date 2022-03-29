@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightblue;
+}
+
+.colors li {
+  width: fit-content;
+  padding: 0.5em 1em;
+  margin-bottom: 0.25em;
+}
+
+table,
+th,
+td {
+  border: solid black 1px;
+  padding: 0.5em 1em;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 1em;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="style.css" />
     <title>Cars</title>
   </head>
 
@@ -24,11 +24,12 @@
     referrerpolicy="no-referrer"
   ></script>
   <script id="handlebars-template" type="text/x-handlebars-template">
+    <h1>Cars</h1>
     <div class='colors'>
       <h2>All Colors</h2>
       <ul>
         {{#each colors}}
-          <li>{{this}}</li>
+          <li style='background-color:{{this}};'>{{this}}</li>
         {{/each}}
       </ul>
     </div>
@@ -40,7 +41,6 @@
         {{/each}}
       </ul>
     </div>
-    <h2>Cars</h2>
     <h3>Filter</h3>
     <label for='make'>Make:</label>
     <select onchange='filter()' name='make' id='make'>
